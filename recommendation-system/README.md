@@ -24,7 +24,7 @@
 Book recommendation system is implemented using collaborative filtering with Spark's Alternating Least Saqures (ALS) algorithm and Flask Python micro-framework. It's divided into two parts, that is:
 
 1. Part 1 : [Build a recommender engine using ALS Algorithm](notebook/04%20-%20Recommendation%20System.ipynb) 
-2. Part 2 : [Build a web-service on top of Spark models using Flask](recommendation-system/recommendation-system.md)
+2. Part 2 : [Build a web-service on top of Spark models using Flask](recommendation-system.md)
 
 ## References
 * https://spark.apache.org/docs/latest/ml-collaborative-filtering.html
