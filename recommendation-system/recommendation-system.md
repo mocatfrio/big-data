@@ -1,4 +1,4 @@
-## Part 2
+## Part 2 : Build a web-service on top of Spark models using Flask
 # Book Recommendation System using Apache Spark and Flask
 
 ## Description
@@ -44,7 +44,7 @@ Output data of this API are in JSON form.
     ![](img/ss1.png)
 
 ## Some URL/End Points Can be Accessed
-1. `http://<SERVER_IP>:1998/<user_id>/ratings/top/<book_count>` (GET)
+1. **[GET]** `http://<SERVER_IP>:1998/<user_id>/ratings/top/<book_count>`
 
     An end points to get some book recommendations as many as `<book_count>` for a user based on its `<user_id>`.
 
@@ -53,7 +53,7 @@ Output data of this API are in JSON form.
 
     ![](img/ss2.png)
 
-2. `http://<SERVER_IP>:1998/books/<book_id>/recommend/<user_count>` (GET)
+2. **[GET]** `http://<SERVER_IP>:1998/books/<book_id>/recommend/<user_count>`
 
     An end point to get some users as many as `<user_count>` who get a book as recommendation based on its `<book_id>`.
 
@@ -62,8 +62,7 @@ Output data of this API are in JSON form.
 
     ![](img/ss3.png)
 
-
-3. `http://<SERVER_IP>:1998/<user_id>/ratings/<book_id>` (GET)
+3. **[GET]** `http://<SERVER_IP>:1998/<user_id>/ratings/<book_id>`
 
     An end point to predict a user give rate for a book based on `<user_id>` and `<book_id>`.
 
@@ -72,7 +71,7 @@ Output data of this API are in JSON form.
 
     ![](img/ss4.png)
 
-4. `http://<SERVER_IP>:1998/<user_id>/giverating` (POST)
+4. **[POST]** `http://<SERVER_IP>:1998/<user_id>/giverating`
 
     An end point to give rate for a book based on `<user_id>`.
 
@@ -81,7 +80,7 @@ Output data of this API are in JSON form.
 
     ![](img/ss5.png)
 
-5. `http://<SERVER_IP>:1998/<user_id>/history` (GET)
+5. **[GET]** `http://<SERVER_IP>:1998/<user_id>/history`
 
     An end point to get rates history of a user based on `<user_id>`. 
 

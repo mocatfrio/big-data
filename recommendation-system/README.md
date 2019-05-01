@@ -3,9 +3,9 @@
 
 ## 1. Preparation
 ### 1.1 Requirements
-1. Apache Spark 2.4.0 Binary (https://spark.apache.org/downloads.html)
+1. Apache Spark 2.4.0 Binary
 2. PySpark 2.4.2 (Apache Spark Python API)
-3. Jupyter Notebook (https://jupyter.org/install)
+3. Jupyter Notebook 
 4. Numpy 1.16.3
 5. Flask
 6. Postman
@@ -23,8 +23,8 @@
 
 Book recommendation system is implemented using collaborative filtering with Spark's Alternating Least Saqures (ALS) algorithm and Flask Python micro-framework. It's divided into two parts, that is:
 
-1. Part 1 : [Build a recommender engine using ALS Algorithm](notebook/04%20-%20Recommendation%20System.ipynb) 
-2. Part 2 : [Build a web-service on top of Spark models using Flask](recommendation-system.md)
+### Part 1 : [Build a recommender engine using ALS Algorithm](notebook/04%20-%20Recommendation%20System.ipynb) 
+### Part 2 : [Build a web-service on top of Spark models using Flask](recommendation-system.md)
 
 ## References
 * https://spark.apache.org/docs/latest/ml-collaborative-filtering.html
