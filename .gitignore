@@ -1,3 +1,5 @@
 notebook/.ipynb_checkpoints/
 notebook/spark-warehouse/
 datasets/*
+__pycache*
+recommendation-system/flask-app/venv/
