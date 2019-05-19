@@ -2,25 +2,25 @@
 
 ## 1. Description 
 ### 1.1 Architecture 
-* Final project has the following architecture:
+Final project has the following architecture:
     
     ![](img/ss1.png)
 
-* Based on architecture above, this system has four main components, that is:
+Based on architecture above, this system has four main components, that is:
   1. **Apache Zookeeper**, as centralized service for distributed systems.
   2. **Apache Kafka**, as stream-processing software platform. It relies on Zookeeper. Kafka has three parts, i.e. Producer, Server, and Consumer.
   3. **Apache Spark**, as analytics engine for big data processing. Spark script is used to processing and analyze datasets into Models.
   4. **Flask**, as microframework to build APIs that can be accessed by User.
 
 ### 1.2 Requirements
-1. Apache Spark 2.4.0 Binary
-2. PySpark 2.4.2 (Apache Spark Python API)
-3. Jupyter Notebook 
-4. Numpy 1.16.3
-5. Flask
-6. Postman
-7. Apache Zookeeper
-8. Apache Kafka
+ 1. Apache Spark 2.4.0 Binary
+ 2. PySpark 2.4.2 (Apache Spark Python API)
+ 3. Jupyter Notebook 
+ 4. Numpy 1.16.3
+ 5. Flask
+ 6. Postman
+ 7. Apache Zookeeper
+ 8. Apache Kafka
 
 ### 1.3 Dataset
 coming soon
