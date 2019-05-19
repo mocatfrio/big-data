@@ -72,7 +72,7 @@ Implementation will be divided into three parts.
    ```bash
    $ zookeeper-server-start /usr/local/etc/kafka/zookeeper.properties & kafka-server-start /usr/local/etc/kafka/server.properties
    ```
-   It will display lots of line on the terminal, but if the following lines is appearing, it means Zookeeper and Kafka server are running properly.
+   It will display lots of line on the terminal, but if the following lines appear, it means Zookeeper and Kafka server are running properly.
 
    * Zookeeper server logs
         ```bash
@@ -107,9 +107,10 @@ Implementation will be divided into three parts.
 Next, we will build producer and consumer apps that accesing Kafka in Python. There are multiple Python libraries available to use, one of them is **Kafka-Python**, the open-source Python libraries.
 
 1. Install Kafka-Python using Pip
+
     ```bash
     # using Python3
-    pip3 install kafka-python
+    $ pip3 install kafka-python
     ```
 2. 
     
