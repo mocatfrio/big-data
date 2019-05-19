@@ -4,7 +4,7 @@
 ### 1.1 Architecture 
 Final project has the following architecture:
     
-    ![](img/ss1.png)
+![](img/ss1.png)
 
 Based on architecture above, this system has four main components, that is:
   1. **Apache Zookeeper**, as centralized service for distributed systems.
