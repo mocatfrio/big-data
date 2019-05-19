@@ -1,7 +1,5 @@
 # Recommendation Engine with Flask REST API
 
-
-
 ## Struktur Sistem
 
 ### Server.py
