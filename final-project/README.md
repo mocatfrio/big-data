@@ -104,7 +104,13 @@ Implementation will be divided into three parts.
 ![](img/ss2.png)
 
 #### 2.1.2 Build Apps
-Next, we will build producer and consumer apps that accesing Kafka in Python. There are multiple Python libraries available to use, one of them is **Kafka-Python**, the open-source Python libraries.
+Next, we will build producer and consumer apps that accesing Kafka in Python. 
+1. **Kafka Producers** will send data per-line to Kafka Server as if it is streaming. This process can be done by adding pause or sleep randomly, so, data will not sent directly.
+2. **Kafka Consumers** will receive data from Kafka server and store it in some batch. Batch can be determined based on:
+   * Number of data received
+   * Sliding window time
+
+There are multiple Python libraries available to use, one of them is **Kafka-Python**, the open-source Python libraries.
 
 1. Install Kafka-Python using Pip
 
@@ -116,6 +122,7 @@ Next, we will build producer and consumer apps that accesing Kafka in Python. Th
     
 
 ### 2.2 Recommender Engine
+
 ### 2.2 API
 
 
