@@ -30,8 +30,10 @@ Implementation will be divided into three parts.
 
 ### 2.1 Stream-Processing
 * Stream-processing is implemented using Kafka and Zookeeper.
-* Kafka works as follows: 
+* Kafka works as follows:
+
     ![](img/gb1.png)
+
 * There are three main parts of Kafka:
     1. **Topics** : Category or feed name to which stream of records are published. The messages are stored in key-value format. Each message is assigned a sequence, called Offset. The output of one message could be an input of the other for further processing.
     2. **Producers** : The apps responsible to publish data into Kafka system. They publish data on the topic of their choice.
