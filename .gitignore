@@ -4,3 +4,4 @@ datasets/*
 __pycache*
 recommendation-system/flask-app/venv/
 final-project/app/venv/
+final-project/notebook/.ipynb*
