@@ -1,29 +1,48 @@
-# Final Project
+# Final Project : Recommendation System on Data Stream using Kafka, Spark, and Flask 
+
+## Table of Contents
+- [Final Project : Recommendation System on Data Stream using Kafka, Spark, and Flask](#final-project--recommendation-system-on-data-stream-using-kafka-spark-and-flask)
+  - [Table of Contents](#table-of-contents)
+  - [1. Description](#1-description)
+    - [1.1 Architecture](#11-architecture)
+    - [1.2 Requirements](#12-requirements)
+    - [1.3 Dataset](#13-dataset)
+  - [2. Implementation](#2-implementation)
+    - [2.1 Stream-Processing](#21-stream-processing)
+      - [2.1.1 Installation](#211-installation)
+      - [2.1.2 Build Producer and Consumer Apps](#212-build-producer-and-consumer-apps)
+    - [2.2 Recommender Engine](#22-recommender-engine)
+    - [2.2 API](#22-api)
+  - [References](#references)
 
 ## 1. Description 
 ### 1.1 Architecture 
-Final project has the following architecture:
+This final project has the following architecture:
     
 ![](img/ss1.png)
 
-Based on architecture above, this system has four main components, that is:
-  1. **Apache Zookeeper**, as centralized service for distributed systems.
-  2. **Apache Kafka**, as stream-processing software platform. It relies on Zookeeper. Kafka has three parts, i.e. Producer, Server, and Consumer.
-  3. **Apache Spark**, as analytics engine for big data processing. Spark script is used to processing and analyze datasets into Models.
-  4. **Flask**, as microframework to build APIs that can be accessed by User.
+Based on the architecture above, this system has three main components, that is:
+  1. **Apache Zookeeper and Apache Kafka**. **Zookeeper** as centralized service for distributed systems, while **Kafka** as stream-processing software platform. Kafka relies on Zookeeper.
+  2. **Apache Spark**, as analytics engine for big data processing. Spark script is used to processing and analyze datasets into Models.
+  3. **Flask**, as microframework to build APIs that can be accessed by User.
 
 ### 1.2 Requirements
- 1. Apache Spark 2.4.0 Binary
- 2. PySpark 2.4.2 (Apache Spark Python API)
- 3. Jupyter Notebook 
- 4. Numpy 1.16.3
- 5. Flask
- 6. Postman
- 7. Apache Zookeeper
- 8. Apache Kafka
+These are some requirements in this final project:
+1. Apache Zookeeper 3.4.13
+2. Apache Kafka 2.2.0
+3. Apache Spark 2.4.0 Binary
+4. Flask
+5. Postman (API testing)
+6. Some Python libraries:
+    - PySpark 2.4.2 (Apache Spark Python API)
+    - Numpy 1.16.3
+    - Kafka-Python
 
 ### 1.3 Dataset
-coming soon
+* Dataset's name: [LastFM Dataset](https://grouplens.org/datasets/hetrec-2011/)
+* This dataset contains social networking, tagging, and music artist listening information from a set of 2K users from Last.fm online music system (http://www.last.fm). Further description can be found here: http://files.grouplens.org/datasets/hetrec2011/hetrec2011-lastfm-readme.txt
+* This final project only uses these two kinds of data i.e. **artists.csv** and **user_artists.csv**
+* Dataset's extension is **dat**, so it must be converted first into csv using my [**convert.py**](app/convert.py) script
 
 ## 2. Implementation
 Implementation will be divided into three parts.
@@ -35,11 +54,11 @@ Implementation will be divided into three parts.
     ![](img/gb1.png)
 
 * There are three main parts of Kafka:
-    1. **Topics** : Category or feed name to which stream of records are published. The messages are stored in key-value format. Each message is assigned a sequence, called Offset. The output of one message could be an input of the other for further processing.
-    2. **Producers** : The apps responsible to publish data into Kafka system. They publish data on the topic of their choice.
-    3. **Consumers** : The apps responsible to utilize the messages published into topics. A consumer gets subscribed to the topic of its choice and consumes data.
+    1. **Topics** : Category or feed name to which stream of records are published. The messages are stored in key-value format. The output of one message could be an input of the other for further processing.
+    2. **Producers** : Apps that responsible to publish data into Kafka system. Producers can publish data on the certain topic they choose.
+    3. **Consumers** : Apps that responsible to utilize the messages published into topics. Consumers get subscribed to the topic they choose and consumes data.
 
-#### 2.1.1 Installation and Running
+#### 2.1.1 Installation
 1. First, install Kafka on Mac using Homebrew:
 
     ```bash
@@ -89,31 +108,34 @@ Implementation will be divided into three parts.
         ```
 3. Create a Kafka topic by this following line:
     ```bash
-    $ kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic test
+    $ kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic lastfm
     ```
-    For example, we want to make a topic named "test" just for test Kafka broker server.
-4. Initialize Producer console which will listen to localhost at port 9092 at topic test:
+    In this final project, I'll make a topic named **"lastfm"**.
+4. To test the topic created, initialize Producer console that will listen to localhost at port 9092 at topic "lastfm".
     ```bash
-    kafka-console-producer --broker-list localhost:9092 --topic test
+    $ kafka-console-producer --broker-list localhost:9092 --topic lastfm
     ```
-5. Initialize Consumer console which will listen to bootstrap server localhost at port 9092 at topic test from beginning:
+    
+    After that, initialize Consumer console that will listen to bootstrap server localhost at port 9092 at topic "lastfm" from beginning.
+
     ```bash
-    kafka-console-consumer --bootstrap-server localhost:9092 --topic test --from-beginning
+    $ kafka-console-consumer --bootstrap-server localhost:9092 --topic lastfm --from-beginning
     ```
+    
+    ![](img/ss3.png)
 
-![](img/ss2.png)
+#### 2.1.2 Build Producer and Consumer Apps
+Next, we will build producer and consumer apps that accesing Kafka in Python using **Kafka-Python**, the open-source Python libraries. 
 
-#### 2.1.2 Build Apps
-Next, we will build producer and consumer apps that accesing Kafka in Python. 
+There are some rules in this final project:
 1. **Kafka Producers** will send data per-line to Kafka Server as if it is streaming. This process can be done by adding pause or sleep randomly, so, data will not sent directly.
 2. **Kafka Consumers** will receive data from Kafka server and store it in some batch. Batch can be determined based on:
    * Number of data received
    * Sliding window time
 
-There are multiple Python libraries available to use, one of them is **Kafka-Python**, the open-source Python libraries.
+Here the steps:
 
 1. Install Kafka-Python using Pip
-
     ```bash
     # using Python3
     $ pip3 install kafka-python
@@ -124,7 +146,6 @@ There are multiple Python libraries available to use, one of them is **Kafka-Pyt
 ### 2.2 Recommender Engine
 
 ### 2.2 API
-
 
 ## References
 * https://medium.com/@Ankitthakur/apache-kafka-installation-on-mac-using-homebrew-a367cdefd273

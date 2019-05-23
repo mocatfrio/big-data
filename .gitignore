@@ -3,3 +3,4 @@ notebook/spark-warehouse/
 datasets/*
 __pycache*
 recommendation-system/flask-app/venv/
+final-project/app/venv/
