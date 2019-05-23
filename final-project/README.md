@@ -1,7 +1,8 @@
-# Final Project : Recommendation System on Data Stream using Kafka, Spark, and Flask 
+## Final Project
+# Recommendation System on Data Stream using Kafka, Spark, and Flask 
 
 ## Table of Contents
-- [Final Project : Recommendation System on Data Stream using Kafka, Spark, and Flask](#final-project--recommendation-system-on-data-stream-using-kafka-spark-and-flask)
+- [Recommendation System on Data Stream using Kafka, Spark, and Flask](#recommendation-system-on-data-stream-using-kafka-spark-and-flask)
   - [Table of Contents](#table-of-contents)
   - [1. Description](#1-description)
     - [1.1 Architecture](#11-architecture)
@@ -11,6 +12,7 @@
     - [2.1 Stream-Processing](#21-stream-processing)
       - [2.1.1 Installation](#211-installation)
       - [2.1.2 Build Producer and Consumer Apps](#212-build-producer-and-consumer-apps)
+      - [2.1.3 Run Producer and Consumer Apps](#213-run-producer-and-consumer-apps)
     - [2.2 Recommender Engine](#22-recommender-engine)
     - [2.2 API](#22-api)
   - [References](#references)
@@ -132,20 +134,29 @@ There are some rules in this final project:
 2. **Kafka Consumers** will receive data from Kafka server and store it in some batch. Batch can be determined based on:
    * Number of data received
    * Sliding window time
-
-Here the steps:
-
-1. Install Kafka-Python using Pip
-    ```bash
-    # using Python3
-    $ pip3 install kafka-python
-    ```
-2. 
     
+#### 2.1.3 Run Producer and Consumer Apps
+1. Run **producer.py** 
+    ```bash
+    python3 producer.py
+    ```
+2. Run **consumer.py**
+    ```bash
+    python3 consumer.py
+    ```
+3. When all processes are complete, "batch" directory will appeared as the output.
+   ![](img/ss4.png)
 
 ### 2.2 Recommender Engine
+The recommender engine is implemented using Collaborative Filtering with Spark's Alternating Least Squares (ALS) algorithm that explained [here](notebook/recommendation-system-final-project.ipynb).
+
+In this final project, we'll make three kinds of model:
+1. **Model 1** : First one-third data
+2. **Model 2** : First one-third data + second one-third data
+3. **Model 3** : All data
 
 ### 2.2 API
+Click [here](app/) for further explanation.
 
 ## References
 * https://medium.com/@Ankitthakur/apache-kafka-installation-on-mac-using-homebrew-a367cdefd273
