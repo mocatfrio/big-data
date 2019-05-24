@@ -24,16 +24,16 @@ def top_ratings(model_id, user_id, count):
 Menampilkan music dengan <artist_id> terbaik direkomendasikan ke sejumlah <count> user
 """
 @main.route("/<int:model_id>/artists/<int:artist_id>/recommend/<int:count>", methods=["GET"])
-def movie_recommending(model_id, artist_id, count):
+def artist_recommending(model_id, artist_id, count):
   logger.debug("Book ID %s TOP user recommending", artist_id)
-  top_rated = recommendation_engine.get_top_book_recommend(model_id, artist_id, count)
+  top_rated = recommendation_engine.get_top_music_recommend(model_id, artist_id, count)
   return json.dumps(top_rated)
 
 """
 Melakukan prediksi user <user_id> mendengarkan sejumlah X terhadap artist <artist_id>
 """
-@main.route("/<int:model_id>/<int:user_id>/ratings/<int:artist_id>", methods=["GET"])
-def movie_ratings(model_id, user_id, artist_id):
+@main.route("/<int:model_id>/<int:user_id>/listen/<int:artist_id>", methods=["GET"])
+def listening_count(model_id, user_id, artist_id):
   logger.debug("User %s rating requested for book %s", user_id, artist_id)
   weight = recommendation_engine.get_listening_count_for_artist_ids(model_id, user_id, artist_id)
   return json.dumps(weight)

@@ -14,8 +14,6 @@ Music Recommendation System has some features below:
 3. Predicting a user listen the music of an artist
 4. Showing listening count history by a user
 
-Output data of this API are in JSON form.
-
 ## How to Run
 1. If you want to use **Virtualenv**, make it first by
     ```python
@@ -42,9 +40,8 @@ Output data of this API are in JSON form.
     ![](../img/ss5.png)
 
 ## Some End Points Can be Accessed
-#### 1. **http://\<SERVER_IP\>:1998/\<model_id\>/\<user_id\>/ratings/top/\<number_of_artist\>** [GET]
-
-An end points to get some music artist recommendations as many as `<number_of_artist>` for a user based on its `<user_id>`.
+### 1. **http://\<SERVER_IP\>:1998/\<model_id\>/\<user_id\>/ratings/top/\<number_of_artists\>** [GET]
+An end points to get some music artist recommendations as many as `<number_of_artists>` for a user based on its `<user_id>`.
 
 For example:
 ```
@@ -57,39 +54,33 @@ If the model used is different, the results will be different too.
 
 ![](../img/ss7.png)
 
+### 2. **http://\<SERVER_IP\>:1998/\<model_id\>/artists/\<artist_id\>/recommend/\<number_of_users\>** [GET]
+An end point to get some users as many as `<number_of_users>` who get an artist as recommendation based on its `<artist_id>`.
 
-1. **[GET]** `http://<SERVER_IP>:1998/books/<book_id>/recommend/<user_count>`
+For example:
+```
+http://localhost:1998/2/artists/9/recommend/4
+```
 
-    An end point to get some users as many as `<user_count>` who get a book as recommendation based on its `<book_id>`.
+![](../img/ss8.png)
 
-     For example:
-    `http://localhost:1998/books/9/recommend/4`
+### 3. **http://<SERVER_IP>:1998/\<model_id\>/\<user_id\>/listen/\<artist_id\>** [GET]
+An end point to predict a user listening music of an artist based on `<user_id>` and `<artist_id>`.
 
-    ![](img/ss3.png)
+For example:
+```
+http://localhost:1998/1/43/listen/10
+```
 
-2. **[GET]** `http://<SERVER_IP>:1998/<user_id>/ratings/<book_id>`
+![](../img/ss9.png)
 
-    An end point to predict a user give rate for a book based on `<user_id>` and `<book_id>`.
+### 4. **http://<SERVER_IP>:1998/\<model_id\>/\<user_id\>/history** [GET]
 
-    For example:
-    `http://localhost:1998/43/ratings/10`
+An end point to get listening count history of a user based on `<user_id>`. 
 
-    ![](img/ss4.png)
+For example:
+```
+http://localhost:1998/2/43/history
+```
 
-3. **[POST]** `http://<SERVER_IP>:1998/<user_id>/giverating`
-
-    An end point to give rate for a book based on `<user_id>`.
-
-    For example:
-    `http://localhost:1998/19/giverating`
-
-    ![](img/ss5.png)
-
-4. **[GET]** `http://<SERVER_IP>:1998/<user_id>/history`
-
-    An end point to get rates history of a user based on `<user_id>`. 
-
-    For example:
-    `http://localhost:1998/19/history`
-    
-    ![](img/ss6.png)
+![](../img/ss10.png)

@@ -71,7 +71,7 @@ class RecommendationEngine:
       data['result'].append(json.loads(row))
     return data
 
-  def get_top_book_recommend(self, model_id, artist_id, num_of_users):
+  def get_top_music_recommend(self, model_id, artist_id, num_of_users):
     # Recommends up to top unrated books to user_id
     artist = self.listening_count_df[model_id].select(self.als.getItemCol())
     artist = artist.filter(artist.artist_id == artist_id)
@@ -80,7 +80,6 @@ class RecommendationEngine:
     artistSubsetRecs = artistSubsetRecs.select(func.col('recommendations')['user_id'].alias('user_id'), \
                         func.col('recommendations')['Rating'].alias('Rating')).drop('recommendations')
     artistSubsetRecs = artistSubsetRecs.drop('Rating')
-    artistSubsetRecs = artistSubsetRecs.join(self.artist_df_selected, ('artist_id'), 'inner')
     df_json = artistSubsetRecs.toJSON()
     data = {}
     data['result'] = []
