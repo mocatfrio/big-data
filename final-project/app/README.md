@@ -39,7 +39,7 @@ Music Recommendation System has some features below:
 
     ![](../img/ss5.png)
 
-## Some End Points Can be Accessed
+## API Endpoint
 ### 1. **http://\<SERVER_IP\>:1998/\<model_id\>/\<user_id\>/ratings/top/\<number_of_artists\>** [GET]
 An end points to get some music artist recommendations as many as `<number_of_artists>` for a user based on its `<user_id>`.
 
