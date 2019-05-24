@@ -2,8 +2,6 @@
 # Recommendation System on Data Stream using Kafka, Spark, and Flask 
 
 ## Table of Contents
-- [Recommendation System on Data Stream using Kafka, Spark, and Flask](#recommendation-system-on-data-stream-using-kafka-spark-and-flask)
-  - [Table of Contents](#table-of-contents)
   - [1. Description](#1-description)
     - [1.1 Architecture](#11-architecture)
     - [1.2 Requirements](#12-requirements)
